@@ -6,13 +6,13 @@ import java.util.Objects;
 
 @Embeddable
 public class Address {
-    @Column(name = "city")
+    @Column(name = "city", length = 10)
     private String city;
 
-    @Column(name = "street")
+    @Column(name = "street", length = 100)
     private String street;
 
-    @Column(name = "zipcode")
+    @Column(name = "zipcode", length = 6)
     private String zipcode;
 
     public String getCity() {
@@ -37,6 +37,10 @@ public class Address {
 
     private void setZipcode(String zipcode) {
         this.zipcode = zipcode;
+    }
+
+    public String getFullAddress() {
+        return getCity() + " " + getStreet() + " " + getZipcode();
     }
 
     //Getter로 호출해야 proxy 상황에서도 사용이 가능하다.
