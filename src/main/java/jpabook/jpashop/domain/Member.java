@@ -15,14 +15,8 @@ public class Member extends BaseEntity {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "city")
-    private String city;
-
-    @Column(name = "street")
-    private String street;
-
-    @Column(name = "zipcode")
-    private String zipcode;
+    @Embedded
+    private Address address;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "member")
     private List<Order> orders = new ArrayList<>();
@@ -43,35 +37,11 @@ public class Member extends BaseEntity {
         this.name = name;
     }
 
-    public String getCity() {
-        return city;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public String getZipcode() {
-        return zipcode;
-    }
-
-    public void setZipcode(String zipcode) {
-        this.zipcode = zipcode;
-    }
-
-    public List<Order> getOrders() {
-        return orders;
-    }
-
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }
